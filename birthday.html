@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Roopaali</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            color: #d63384;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in;
+            text-align: center;
+        }
+
+        /* पेड़ और दिल का एनीमेशन */
+        .canvas-container {
+            position: relative;
+        }
+
+        #heartTree {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #555;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ Happy Birthday Rupali ! 💖✨</h1>
+
+    <div class="canvas-container">
+        <canvas id="treeCanvas"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('treeCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 400;
+        canvas.height = 400;
+
+        function drawHeart(x, y, size) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.bezierCurveTo(x, y - size / 2, x - size, y - size / 2, x - size, y);
+            ctx.bezierCurveTo(x - size, y + size * 0.75, x, y + size, x, y + size * 1.5);
+            ctx.bezierCurveTo(x, y + size, x + size, y + size * 0.75, x + size, y);
+            ctx.bezierCurveTo(x + size, y - size / 2, x, y - size / 2, x, y);
+            ctx.fillStyle = "#ff4d6d";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawTree(startX, startY, len, angle, branchWidth) {
+            ctx.beginPath();
+            ctx.save();
+            ctx.strokeStyle = "#5d4037";
+            ctx.lineWidth = branchWidth;
+            ctx.translate(startX, startY);
+            ctx.rotate(angle * Math.PI / 180);
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, -len);
+            ctx.stroke();
+
+            if (len < 15) {
+                drawHeart(0, -len, 8);
+                ctx.restore();
+                return;
+            }
+
+            drawTree(0, -len, len * 0.75, angle - 20, branchWidth * 0.7);
+            drawTree(0, -len, len * 0.75, angle + 20, branchWidth * 0.7);
+
+            ctx.restore();
+        }
+
+        // पेड़ बनाना शुरू करें
+        drawTree(200, 380, 80, 0, 10);
+    </script>
+</body>
+</html>
