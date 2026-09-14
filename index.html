@@ -1,110 +1,188 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Roopaali</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffeef2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-        }
-
-        h1 {
-            color: #d63384;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-in;
-            text-align: center;
-        }
-
-        /* पेड़ और दिल का एनीमेशन */
-        .canvas-container {
-            position: relative;
-        }
-
-        #heartTree {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #555;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ Happy Birthday Krisha ! 💖✨</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: radial-gradient(circle at center, #1b003a 0%, #050014 100%);
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(45deg, #ff76ac, #ffdf79, #ffd269, #ff5e98);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 4s ease infinite, glow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: #f7d6e6;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      animation: fadeIn 2s ease-in;
+    }
+    .heart-btn {
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      color: #fff;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 65, 108, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .heart-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(255, 65, 108, 0.8);
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 10px rgba(255, 118, 172, 0.4)); }
+      to { filter: drop-shadow(0 0 25px rgba(255, 223, 121, 0.8)); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>✨ Happy Birthday Rupali ! 💖✨</h1>
+  <canvas id="canvas"></canvas>
 
-    <div class="canvas-container">
-        <canvas id="treeCanvas"></canvas>
-    </div>
+  <div class="container">
+    <h1>✨ Happy Birthday Krisha ! 💖✨</h1>
+    <p>May your day be filled with joy, laughter, and unforgettable moments! 🎂🎉🌸</p>
+    <button class="heart-btn" onclick="launchSpecialFireworks()">Tap for Surprise 🎆</button>
+  </div>
 
-    <script>
-        const canvas = document.getElementById('treeCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 400;
-        canvas.height = 400;
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
 
-        function drawHeart(x, y, size) {
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.bezierCurveTo(x, y - size / 2, x - size, y - size / 2, x - size, y);
-            ctx.bezierCurveTo(x - size, y + size * 0.75, x, y + size, x, y + size * 1.5);
-            ctx.bezierCurveTo(x, y + size, x + size, y + size * 0.75, x + size, y);
-            ctx.bezierCurveTo(x + size, y - size / 2, x, y - size / 2, x, y);
-            ctx.fillStyle = "#ff4d6d";
-            ctx.fill();
-            ctx.closePath();
+    let cw = (canvas.width = window.innerWidth);
+    let ch = (canvas.height = window.innerHeight);
+
+    window.addEventListener("resize", () => {
+      cw = canvas.width = window.innerWidth;
+      ch = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const colors = ["#ff5e98", "#ffbe3b", "#38ef7d", "#00d2ff", "#a855f7", "#ffffff"];
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.radius = random(2, 4);
+        this.speed = random(2, 7);
+        this.angle = random(0, Math.PI * 2);
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = Math.sin(this.angle) * this.speed;
+        this.gravity = 0.05;
+        this.alpha = 1;
+        this.decay = random(0.01, 0.025);
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+      update() {
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
+    }
+
+    function createFirework(x, y) {
+      const count = 40;
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle(x, y));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = "rgba(5, 0, 20, 0.2)";
+      ctx.fillRect(0, 0, cw, ch);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].alpha <= 0) {
+          particles.splice(i, 1);
         }
+      }
 
-        function drawTree(startX, startY, len, angle, branchWidth) {
-            ctx.beginPath();
-            ctx.save();
-            ctx.strokeStyle = "#5d4037";
-            ctx.lineWidth = branchWidth;
-            ctx.translate(startX, startY);
-            ctx.rotate(angle * Math.PI / 180);
-            ctx.moveTo(0, 0);
-            ctx.lineTo(0, -len);
-            ctx.stroke();
+      if (Math.random() < 0.06) {
+        createFirework(random(cw * 0.1, cw * 0.9), random(ch * 0.1, ch * 0.6));
+      }
 
-            if (len < 15) {
-                drawHeart(0, -len, 8);
-                ctx.restore();
-                return;
-            }
+      requestAnimationFrame(animate);
+    }
 
-            drawTree(0, -len, len * 0.75, angle - 20, branchWidth * 0.7);
-            drawTree(0, -len, len * 0.75, angle + 20, branchWidth * 0.7);
+    function launchSpecialFireworks() {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          createFirework(random(cw * 0.2, cw * 0.8), random(ch * 0.15, ch * 0.5));
+        }, i * 200);
+      }
+    }
 
-            ctx.restore();
-        }
-
-        // पेड़ बनाना शुरू करें
-        drawTree(200, 380, 80, 0, 10);
-    </script>
+    animate();
+  </script>
 </body>
 </html>
