@@ -1,188 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ Happy Birthday Krisha ! 💖✨</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background: radial-gradient(circle at center, #1b003a 0%, #050014 100%);
-      min-height: 100vh;
-      overflow: hidden;
-      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .container {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 800;
-      background: linear-gradient(45deg, #ff76ac, #ffdf79, #ffd269, #ff5e98);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientShift 4s ease infinite, glow 2s ease-in-out infinite alternate;
-      text-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      color: #f7d6e6;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-      animation: fadeIn 2s ease-in;
-    }
-    .heart-btn {
-      margin-top: 30px;
-      padding: 12px 28px;
-      font-size: 1.1rem;
-      color: #fff;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255, 65, 108, 0.5);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .heart-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 30px rgba(255, 65, 108, 0.8);
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 10px rgba(255, 118, 172, 0.4)); }
-      to { filter: drop-shadow(0 0 25px rgba(255, 223, 121, 0.8)); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f6fb">
+  <meta name="description" content="Heet Shah — independent developer and BCA student building Android apps, web tools and interactive software projects.">
+  <meta name="author" content="Heet Shah">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Heet Shah — Developer & Builder">
+  <meta property="og:description" content="Curious mind. Builder's hands. Explore Android, web and interactive projects by Heet Shah.">
+  <meta property="og:url" content="https://heetdevlab.github.io/portfolio/">
+  <title>Heet Shah — Developer & Builder</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Heet Shah home">
+      <span class="brand-mark">H<span>.</span></span>
+      <span class="brand-name">HEET SHAH<small>DEVELOPER & BUILDER</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#stack">Toolkit</a>
+      <a href="#journey">Journey</a>
+    </nav>
+    <div class="header-right">
+      <a class="header-contact" href="#contact">Let's talk <span>↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav" type="button"><i></i><i></i></button>
+    </div>
+  </header>
 
-  <canvas id="canvas"></canvas>
+  <div class="nav-scrim" id="navScrim"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav-label"><span>MENU / 01</span><span>HEET SHAH</span></div>
+    <a href="#work"><small>01</small> Selected work <b>↗</b></a>
+    <a href="#about"><small>02</small> About me <b>↗</b></a>
+    <a href="#stack"><small>03</small> Toolkit <b>↗</b></a>
+    <a href="#journey"><small>04</small> Journey <b>↗</b></a>
+    <a href="#contact"><small>05</small> Contact <b>↗</b></a>
+    <a class="mobile-resume" href="assets/Heet_Shah_Resume.pdf" download>Download resume <b>↓</b></a>
+  </nav>
 
-  <div class="container">
-    <h1>✨ Happy Birthday Krisha ! 💖✨</h1>
-    <p>May your day be filled with joy, laughter, and unforgettable moments! 🎂🎉🌸</p>
-    <button class="heart-btn" onclick="launchSpecialFireworks()">Tap for Surprise 🎆</button>
-  </div>
-<footer>By heet shah</footer>
-  <script>
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
 
-    let cw = (canvas.width = window.innerWidth);
-    let ch = (canvas.height = window.innerHeight);
+      <div class="hero-copy">
+        <div class="availability"><span class="availability-dot"></span> INDEPENDENT DEVELOPER <b>·</b> INDIA</div>
+        <p class="hero-intro">HELLO, I'M HEET.</p>
+        <h1 id="heroTitle">I build ideas<br>into <em>real things.</em></h1>
+        <p class="hero-summary">I’m a developer who enjoys turning curious ideas into useful digital experiences — from <strong>Android apps</strong> and <strong>web tools</strong> to interactive projects.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore my work <span>↘</span></a>
+          <a class="button button-secondary" href="assets/Heet_Shah_Resume.pdf" download>Download resume <span>↓</span></a>
+        </div>
+        <div class="hero-details">
+          <span><i></i> BCA STUDENT</span>
+          <span>BHAVNAGAR, GUJARAT</span>
+          <span>LEARN · BUILD · IMPROVE</span>
+        </div>
+      </div>
 
-    window.addEventListener("resize", () => {
-      cw = canvas.width = window.innerWidth;
-      ch = canvas.height = window.innerHeight;
-    });
+      <div class="hero-visual">
+        <div class="visual-orbit orbit-a" aria-hidden="true"></div>
+        <div class="visual-orbit orbit-b" aria-hidden="true"></div>
+        <div class="portrait-card">
+          <div class="portrait-topline"><span>PERSONAL PROFILE</span><span>01 / 01</span></div>
+          <div class="portrait-image-wrap">
+            <img src="assets/profile.png" alt="Portrait of Heet Shah" fetchpriority="high">
+            <div class="portrait-monogram" aria-hidden="true">H<span>.</span></div>
+          </div>
+          <div class="portrait-caption"><div><strong>Heet Shah</strong><span>Developer & curious builder</span></div><span class="caption-arrow">↗</span></div>
+        </div>
+        <div class="float-chip chip-blue"><span class="chip-icon">⌘</span><span>BUILDING<br><b>ANDROID APPS</b></span></div>
+        <div class="float-chip chip-teal"><span class="chip-icon">✳</span><span>ALWAYS<br><b>LEARNING</b></span></div>
+        <div class="visual-index">IDEAS → EXPERIMENTS → BUILDS</div>
+      </div>
 
-    const particles = [];
-    const colors = ["#ff5e98", "#ffbe3b", "#38ef7d", "#00d2ff", "#a855f7", "#ffffff"];
+      <a class="scroll-cue" href="#work"><span></span> SCROLL TO EXPLORE</a>
+      <div class="hero-side-note" aria-hidden="true">A PERSONAL PORTFOLIO / 2026</div>
+    </section>
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+    <!-- FOCUS STRIP -->
+    <div class="focus-strip" aria-label="Development interests">
+      <div class="focus-track">
+        <span>ANDROID DEVELOPMENT</span><b>✳</b><span>WEB EXPERIENCES</span><b>✳</b><span>GAME DEVELOPMENT</span><b>✳</b><span>PRODUCT THINKING</span><b>✳</b>
+        <span>ANDROID DEVELOPMENT</span><b>✳</b><span>WEB EXPERIENCES</span><b>✳</b><span>GAME DEVELOPMENT</span><b>✳</b><span>PRODUCT THINKING</span><b>✳</b>
+      </div>
+    </div>
 
-    class Particle {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.radius = random(2, 4);
-        this.speed = random(2, 7);
-        this.angle = random(0, Math.PI * 2);
-        this.vx = Math.cos(this.angle) * this.speed;
-        this.vy = Math.sin(this.angle) * this.speed;
-        this.gravity = 0.05;
-        this.alpha = 1;
-        this.decay = random(0.01, 0.025);
-      }
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = this.color;
-        ctx.fill();
-        ctx.restore();
-      }
-      update() {
-        this.vy += this.gravity;
-        this.x += this.vx;
-        this.y += this.vy;
-        this.alpha -= this.decay;
-      }
-    }
+    <!-- WORK -->
+    <section class="section work-section" id="work">
+      <div class="section-heading">
+        <div class="section-index">01 <span></span> SELECTED WORK</div>
+        <div class="section-heading-copy">
+          <p class="eyebrow">A FEW THINGS I'VE BEEN MAKING</p>
+          <h2>Ideas, made<br><em>tangible.</em></h2>
+          <p class="section-lead">A collection of apps, utilities and experiments — built to solve problems, explore ideas and keep learning.</p>
+        </div>
+      </div>
 
-    function createFirework(x, y) {
-      const count = 40;
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle(x, y));
-      }
-    }
+      <!-- FEATURED PROJECT -->
+      <article class="featured-project reveal">
+        <div class="featured-copy">
+          <div class="project-meta"><span>01 / ANDROID APPLICATION</span><span class="project-state"><i></i> FEATURED PROJECT</span></div>
+          <div class="featured-title-block"><span class="project-kicker">PRIVACY · APP PROTECTION</span><h3>Sentinex<span>.</span></h3></div>
+          <p class="featured-tagline">Your apps.<br><em>Your privacy.</em></p>
+          <p class="project-description">An Android app-protection project focused on helping people secure selected apps with practical privacy features and a simple experience.</p>
+          <div class="tech-tags"><span>KOTLIN</span><span>ANDROID</span><span>APP SECURITY</span></div>
+          <div class="project-links">
+            <a href="https://heetdevlab.github.io/Sentinex/" target="_blank" rel="noopener">Explore Sentinex <b>↗</b></a>
+            <a class="subtle-link" href="https://github.com/HeetDevLab/Sentinex" target="_blank" rel="noopener">View source <b>↗</b></a>
+          </div>
+        </div>
+        <div class="featured-art" aria-label="Illustration of the Sentinex Android app interface">
+          <div class="art-halo"></div>
+          <div class="art-grid"></div>
+          <div class="art-top-label"><span>SENTINEX / SECURE</span><span>ANDROID · 01</span></div>
+          <div class="security-card">
+            <div class="security-head"><span class="security-logo">S</span><span>SENTINEX<small>SECURE ACCESS</small></span><i>•••</i></div>
+            <div class="shield-wrap"><svg viewBox="0 0 120 136" role="img" aria-label="Shield"><path d="M60 5 108 23v36c0 31-20 55-48 70C32 114 12 90 12 59V23L60 5Z" fill="url(#shieldGrad)" stroke="#bdeaff" stroke-width="2"/><path d="m39 67 14 14 29-33" fill="none" stroke="#10264d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c6f6f1"/><stop offset="1" stop-color="#5b9ef8"/></linearGradient></defs></svg></div>
+            <div class="security-status"><span><i></i> DEVICE PROTECTED</span><b>ACTIVE</b></div>
+            <div class="security-apps"><span>APP LOCK</span><span>PRIVACY</span><span>LOGS</span></div>
+          </div>
+          <div class="art-float float-lock"><span>⌑</span> PRIVATE ACCESS</div>
+          <div class="art-float float-safe"><i></i> PROTECTION ON</div>
+          <div class="art-bottom-label">DESIGNED & DEVELOPED BY HEET</div>
+        </div>
+      </article>
 
-    function animate() {
-      ctx.fillStyle = "rgba(5, 0, 20, 0.2)";
-      ctx.fillRect(0, 0, cw, ch);
+      <!-- SECONDARY PROJECTS -->
+      <div class="project-grid">
+        <a class="project-card vault-card reveal" href="https://heetdevlab.github.io/Sentinex-Vault/" target="_blank" rel="noopener">
+          <div class="project-card-top"><span>02 / ANDROID</span><span class="card-arrow">↗</span></div>
+          <div class="project-symbol vault-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 15.5A4.5 4.5 0 0 1 13.5 11h21a4.5 4.5 0 0 1 4.5 4.5v21a4.5 4.5 0 0 1-4.5 4.5h-21A4.5 4.5 0 0 1 9 36.5v-21Z"/><path d="M17 21v-4a7 7 0 0 1 14 0v4M16 21h16v13H16z"/><circle cx="24" cy="27" r="2"/></svg></div>
+          <span class="project-category">ANDROID / PRIVACY</span>
+          <h3>Sentinex Vault</h3>
+          <p>A private space concept for keeping personal files and media more secure.</p>
+          <span class="card-cta">Explore project <b>↗</b></span>
+        </a>
+        <a class="project-card tools-card reveal" href="https://heetdevlab.github.io/Webtools/" target="_blank" rel="noopener">
+          <div class="project-card-top"><span>03 / WEB UTILITIES</span><span class="card-arrow">↗</span></div>
+          <div class="project-symbol tools-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="8"/><path d="M17 17h14M17 24h9M17 31h14"/><circle cx="33" cy="24" r="2"/></svg></div>
+          <span class="project-category">WEB / EVERYDAY TOOLS</span>
+          <h3>WebTools</h3>
+          <p>A collection of browser-based tools for passwords, PINs, hashes and secure notes.</p>
+          <span class="card-cta">Open WebTools <b>↗</b></span>
+        </a>
+      </div>
 
-      for (let i = particles.length - 1; i >= 0; i--) {
-        particles[i].update();
-        particles[i].draw();
-        if (particles[i].alpha <= 0) {
-          particles.splice(i, 1);
-        }
-      }
+      <!-- GAME PROJECT -->
+      <article class="game-project reveal">
+        <div class="game-art-panel" aria-label="Decorative illustration of a phone repair workspace">
+          <div class="repair-glow"></div>
+          <div class="repair-grid"></div>
+          <div class="bench-label">WORKSHOP / 001</div>
+          <div class="repair-bench">
+            <div class="bench-light"></div>
+            <div class="phone-board"><div class="phone-screen"></div><div class="phone-camera"></div><div class="phone-circuit circuit-one"></div><div class="phone-circuit circuit-two"></div></div>
+            <div class="tool-driver"></div>
+            <div class="tool-tweezers"></div>
+            <div class="bench-chip chip-one">R / 01</div><div class="bench-chip chip-two">REPAIR MODE</div>
+          </div>
+          <div class="bench-caption">DIAGNOSE · REPAIR · RESTORE</div>
+        </div>
+        <div class="game-copy">
+          <div class="project-meta"><span>04 / GAME DEVELOPMENT</span><span class="dev-state"><i></i> IN DEVELOPMENT</span></div>
+          <span class="project-kicker">A HANDS-ON SIMULATION</span>
+          <h3>Electronic<br><em>Repair Simulator.</em></h3>
+          <p>A bench-focused game concept about diagnosing devices, repairing electronics and growing practical workshop skills through interactive tasks.</p>
+          <div class="tech-tags"><span>GODOT</span><span>GDSCRIPT</span><span>ANDROID FIRST</span></div>
+          <span class="game-follow">CURRENTLY IN DEVELOPMENT <b>↗</b></span>
+        </div>
+      </article>
 
-      if (Math.random() < 0.06) {
-        createFirework(random(cw * 0.1, cw * 0.9), random(ch * 0.1, ch * 0.6));
-      }
+      <div class="experiment-note reveal">
+        <div><span class="project-category">SIDE EXPERIMENT / AI</span><h3>Nexora</h3><p>An AI assistant concept exploring voice interaction, task handling and helpful device workflows.</p></div>
+        <span class="experiment-badge">EXPLORING <i>✳</i></span>
+      </div>
+    </section>
 
-      requestAnimationFrame(animate);
-    }
+    <!-- ABOUT BAND -->
+    <section class="about-section" id="about">
+      <div class="about-pattern" aria-hidden="true"></div>
+      <div class="about-inner">
+        <div class="section-index light-index">02 <span></span> A LITTLE ABOUT ME</div>
+        <div class="about-content">
+          <div class="about-heading"><p class="eyebrow">STUDENT BY DAY. BUILDER EVERY DAY.</p><h2>Learning by<br><em>making.</em></h2></div>
+          <div class="about-story"><p class="about-lead">I'm Heet Shah — a BCA student and independent developer from Bhavnagar, Gujarat.</p><p>I like understanding how things work, experimenting with new ideas and turning what I learn into real projects. Most of my progress comes from building, testing, fixing and trying again.</p><a href="https://heetdevlab.github.io/" target="_blank" rel="noopener" class="about-brand-link">I build under HeetDevLab <b>↗</b></a></div>
+        </div>
+        <div class="about-pillars">
+          <div><span>01</span><strong>Think clearly.</strong><p>Start with the problem and keep the experience simple.</p></div>
+          <div><span>02</span><strong>Build practically.</strong><p>Turn ideas into working apps, tools and experiments.</p></div>
+          <div><span>03</span><strong>Keep improving.</strong><p>Learn from bugs, feedback and every new attempt.</p></div>
+        </div>
+      </div>
+    </section>
 
-    function launchSpecialFireworks() {
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          createFirework(random(cw * 0.2, cw * 0.8), random(ch * 0.15, ch * 0.5));
-        }, i * 200);
-      }
-    }
+    <!-- TOOLKIT -->
+    <section class="section toolkit-section" id="stack">
+      <div class="section-heading toolkit-heading">
+        <div class="section-index">03 <span></span> MY TOOLKIT</div>
+        <div class="section-heading-copy"><p class="eyebrow">TOOLS I'M LEARNING AND USING</p><h2>Curiosity is<br><em>the real stack.</em></h2></div>
+      </div>
+      <div class="stack-layout">
+        <div class="stack-intro"><p>I enjoy learning across different areas of software development. These are the tools and technologies I work with as I build and experiment.</p><div class="stack-note"><span>NO FAKE SKILL BARS.</span><b>JUST REAL LEARNING.</b></div></div>
+        <div class="stack-list">
+          <div class="stack-row"><span>01 / ANDROID</span><div><b>Kotlin</b><b>Android Studio</b></div><i>↗</i></div>
+          <div class="stack-row"><span>02 / WEB</span><div><b>HTML</b><b>CSS</b><b>JavaScript</b></div><i>↗</i></div>
+          <div class="stack-row"><span>03 / PROGRAMMING</span><div><b>Python</b><b>C</b></div><i>↗</i></div>
+          <div class="stack-row"><span>04 / GAME DEV</span><div><b>Godot</b><b>GDScript</b></div><i>↗</i></div>
+          <div class="stack-row"><span>05 / WORKFLOW</span><div><b>Git</b><b>GitHub</b><b>VS Code</b></div><i>↗</i></div>
+        </div>
+      </div>
+    </section>
 
-    animate();
-  </script>
+    <!-- JOURNEY / EDUCATION -->
+    <section class="journey-section" id="journey">
+      <div class="journey-inner">
+        <div class="section-index">04 <span></span> THE JOURNEY</div>
+        <div class="journey-header"><div><p class="eyebrow">STILL LEARNING. ALWAYS BUILDING.</p><h2>One step at<br><em>a time.</em></h2></div><p>I'm building my foundation through college, self-learning and the practical experience that comes from creating real projects.</p></div>
+        <div class="journey-steps">
+          <div class="journey-step"><span>01</span><h3>Learn</h3><p>Strengthen programming fundamentals through BCA and independent study.</p></div>
+          <div class="journey-step"><span>02</span><h3>Build</h3><p>Apply new concepts through Android apps, web projects and game experiments.</p></div>
+          <div class="journey-step"><span>03</span><h3>Improve</h3><p>Test ideas, solve problems and keep making each project better.</p></div>
+        </div>
+        <div class="education-card"><div class="education-icon">BCA</div><div><span>EDUCATION</span><strong>Bachelor of Computer Applications</strong><p>Shree Swaminarayan College of Computer Science · MKBU</p></div><span class="education-arrow">↗</span></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <div class="contact-orb orb-one" aria-hidden="true"></div><div class="contact-orb orb-two" aria-hidden="true"></div>
+      <div class="contact-content">
+        <p class="eyebrow">HAVE AN IDEA OR WANT TO CONNECT?</p>
+        <h2>Let's build<br><em>something good.</em></h2>
+        <a class="contact-email" href="mailto:heets85520@gmail.com">heets85520@gmail.com <span>↗</span></a>
+        <div class="contact-links">
+          <a href="https://github.com/HeetDevLab" target="_blank" rel="noopener">GITHUB ↗</a>
+          <a href="https://instagram.com/heetdevlab" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+          <a href="https://youtube.com/@heetplayscode" target="_blank" rel="noopener">YOUTUBE ↗</a>
+          <a href="assets/Heet_Shah_Resume.pdf" download>RESUME ↓</a>
+        </div>
+      </div>
+      <div class="contact-bottom"><span>HEET SHAH / DEVELOPER & BUILDER</span><span>BHAVNAGAR, INDIA</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-brand" href="#top"><span>H.</span> HEET SHAH</a>
+    <p>Built with curiosity <span>✳</span> and a lot of iteration.</p>
+    <a href="https://heetdevlab.github.io/" target="_blank" rel="noopener">HEETDEVLAB ↗</a>
+    <small>© <span id="year">2026</span> HEET SHAH</small>
+  </footer>
 </body>
 </html>
